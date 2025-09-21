@@ -31,4 +31,24 @@ describe('EmpacotarPedidoUseCase', () => {
     expect(resultado.caixas[0].caixa_id).toBeDefined();
     expect(resultado.caixas[0].observacao).toBeUndefined();
   });
+
+  it('deve retornar caixa null para produto que nao cabe em nenhuma caixa', () => {
+    const pedidoDTO: PedidoDTO = {
+      pedido_id: 'pedido2',
+      produtos: [
+        {
+          produto_id: 'p1',
+          dimensoes: { altura: 100, largura: 100, comprimento: 100 },
+        },
+      ],
+    };
+
+    const resultado = useCase.execute(pedidoDTO);
+
+    expect(resultado.caixas).toHaveLength(1);
+    expect(resultado.caixas[0].caixa_id).toBeNull();
+    expect(resultado.caixas[0].observacao).toBe(
+      'Produto não cabe em nenhuma caixa disponível.',
+    );
+  });
 });
