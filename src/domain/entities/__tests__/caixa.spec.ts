@@ -1,4 +1,5 @@
 import { Caixa } from '../caixa';
+import { Produto } from '../produto';
 
 describe('Caixa', () => {
   it('deve criar uma caixa valida', () => {
@@ -15,5 +16,12 @@ describe('Caixa', () => {
     expect(() => Caixa.criar('c3', 10, -5, 10)).toThrowError(
       'Caixa c3 com dimensões inválidas.',
     );
+  });
+
+  it('deve retornar true se produto couber na caixa', () => {
+    const caixa = Caixa.criar('c1', 10, 20, 30);
+    const produto = Produto.criar('p1', 5, 10, 15);
+
+    expect(caixa.cabe(produto)).toBe(true);
   });
 });
