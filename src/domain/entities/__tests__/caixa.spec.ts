@@ -31,4 +31,11 @@ describe('Caixa', () => {
 
     expect(caixa.cabe(produtoGrande)).toBe(false);
   });
+
+  it('deve considerar orientacoes do produto ao verificar se cabe', () => {
+    const caixa = Caixa.criar('c1', 10, 20, 30);
+    const produto = Produto.criar('p3', 20, 10, 5);
+
+    expect(caixa.cabe(produto)).toBe(true);
+  });
 });
