@@ -70,4 +70,34 @@ describe('PedidoController (e2e)', () => {
     expect(pedido.caixas[0].caixa_id).toBeDefined();
     expect(pedido.caixas[0].observacao).toBeUndefined();
   });
+
+  it('/pedidos/empacotar (POST) - produto que nao cabe retorna caixa null', async () => {
+    const body = {
+      pedidos: [
+        {
+          pedido_id: 'pedido2',
+          produtos: [
+            {
+              produto_id: 'p1',
+              dimensoes: { altura: 100, largura: 100, comprimento: 100 },
+            },
+          ],
+        },
+      ],
+    };
+
+    const response = await request(getServer() as Server)
+      .post('/pedidos/empacotar')
+      .set('Authorization', `Bearer ${token}`)
+      .send(body)
+      .expect(201);
+
+    const responseBody = response.body as EmpacotarPedidosResponseDTO;
+
+    const caixa = responseBody.pedidos[0].caixas[0];
+    expect(caixa.caixa_id).toBeNull();
+    expect(caixa.observacao).toBe(
+      'Produto não cabe em nenhuma caixa disponível.',
+    );
+  });
 });
