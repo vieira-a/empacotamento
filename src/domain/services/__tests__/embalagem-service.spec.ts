@@ -36,4 +36,17 @@ describe('EmbalagemService', () => {
       'Produto não cabe em nenhuma caixa disponível.',
     );
   });
+
+  it('deve empacotar multiplos produtos na mesma caixa se couberem', () => {
+    const pedido = Pedido.criar('P3', [
+      Produto.criar('p1', 5, 5, 5),
+      Produto.criar('p2', 5, 5, 5),
+    ]);
+
+    const resultado = service.embalar(pedido);
+
+    expect(resultado).toHaveLength(1);
+    expect(resultado[0].caixa?.id).toBe('C1');
+    expect(resultado[0].produtos).toHaveLength(2);
+  });
 });
