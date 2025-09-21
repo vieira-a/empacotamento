@@ -62,4 +62,16 @@ describe('EmbalagemService', () => {
     expect(resultado[0].caixa?.id).toBe('C1');
     expect(resultado[1].caixa?.id).toBe('C3');
   });
+
+  it('deve escolher sempre a menor caixa disponivel que caiba', () => {
+    const pedido = Pedido.criar('P5', [
+      Produto.criar('p1', 9, 9, 9),
+      Produto.criar('p2', 19, 19, 19),
+    ]);
+
+    const resultado = service.embalar(pedido);
+
+    expect(resultado[0].caixa?.id).toBe('C1');
+    expect(resultado[1].caixa?.id).toBe('C2');
+  });
 });
