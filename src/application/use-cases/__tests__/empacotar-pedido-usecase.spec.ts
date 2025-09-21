@@ -51,4 +51,25 @@ describe('EmpacotarPedidoUseCase', () => {
       'Produto não cabe em nenhuma caixa disponível.',
     );
   });
+
+  it('deve empacotar mmltiplos produtos em caixas separadas se necessario', () => {
+    const pedidoDTO: PedidoDTO = {
+      pedido_id: 'pedido3',
+      produtos: [
+        {
+          produto_id: 'p1',
+          dimensoes: { altura: 5, largura: 5, comprimento: 5 },
+        },
+        {
+          produto_id: 'p2',
+          dimensoes: { altura: 25, largura: 25, comprimento: 25 },
+        },
+      ],
+    };
+
+    const resultado = useCase.execute(pedidoDTO);
+
+    expect(resultado.caixas).toHaveLength(1);
+    expect(resultado.caixas[0].produtos).toEqual(['p1', 'p2']);
+  });
 });
