@@ -1,4 +1,4 @@
-import { EmbalagemService } from 'src/domain/services/embalage.service';
+import { EmbalagemService } from '../../domain/services/embalage.service';
 import { Pedido } from '../../domain/entities/pedido';
 import { Produto } from '../../domain/entities/produto';
 import { CAIXAS_PADRAO } from '../../domain/constants/caixas';
