@@ -26,5 +26,14 @@ describe('Entidade Produto', () => {
         'Produto p5 com dimensões inválidas.',
       );
     });
+
+    it('deve lançar erro se comprimento for 0 ou negativo', () => {
+      expect(() => Produto.criar('p6', 10, 10, 0)).toThrow(
+        'Produto p6 com dimensões inválidas.',
+      );
+      expect(() => Produto.criar('p7', 10, 10, -2)).toThrow(
+        'Produto p7 com dimensões inválidas.',
+      );
+    });
   });
 });
