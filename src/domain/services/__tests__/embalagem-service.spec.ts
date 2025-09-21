@@ -1,0 +1,28 @@
+import { Caixa } from '../../entities/caixa';
+import { Pedido } from '../../entities/pedido';
+import { Produto } from '../../entities/produto';
+import { EmbalagemService } from '../embalage.service';
+
+describe('EmbalagemService', () => {
+  let caixas: Caixa[];
+  let service: EmbalagemService;
+
+  beforeEach(() => {
+    caixas = [
+      Caixa.criar('C1', 10, 10, 10),
+      Caixa.criar('C2', 20, 20, 20),
+      Caixa.criar('C3', 30, 30, 30),
+    ];
+
+    service = new EmbalagemService(caixas);
+  });
+
+  it('deve empacotar produto na menor caixa que cabe', () => {
+    const pedido = Pedido.criar('P1', [Produto.criar('p1', 5, 5, 5)]);
+    const resultado = service.embalar(pedido);
+
+    expect(resultado).toHaveLength(1);
+    expect(resultado[0].caixa?.id).toBe('C1');
+    expect(resultado[0].produtos).toHaveLength(1);
+  });
+});
