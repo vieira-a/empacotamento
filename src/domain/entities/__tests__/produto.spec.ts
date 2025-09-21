@@ -43,4 +43,11 @@ describe('Entidade Produto', () => {
       expect(produto.volume).toBe(24);
     });
   });
+
+  describe('Calculo de dimensoes', () => {
+    it('deve retornar as dimensões corretas', () => {
+      const produto = Produto.criar('p9', 5, 6, 7);
+      expect(produto.dimensoes).toEqual([5, 6, 7]);
+    });
+  });
 });
