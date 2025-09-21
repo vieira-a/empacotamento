@@ -49,4 +49,17 @@ describe('EmbalagemService', () => {
     expect(resultado[0].caixa?.id).toBe('C1');
     expect(resultado[0].produtos).toHaveLength(2);
   });
+
+  it('deve criar grupos separados para produtos grandes', () => {
+    const pedido = Pedido.criar('P4', [
+      Produto.criar('p1', 5, 5, 5),
+      Produto.criar('p2', 25, 25, 25),
+    ]);
+
+    const resultado = service.embalar(pedido);
+
+    expect(resultado).toHaveLength(2);
+    expect(resultado[0].caixa?.id).toBe('C1');
+    expect(resultado[1].caixa?.id).toBe('C3');
+  });
 });
