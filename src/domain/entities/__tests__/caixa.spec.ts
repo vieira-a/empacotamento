@@ -24,4 +24,11 @@ describe('Caixa', () => {
 
     expect(caixa.cabe(produto)).toBe(true);
   });
+
+  it('deve retornar false se produto nao couber na caixa', () => {
+    const caixa = Caixa.criar('c1', 10, 20, 30);
+    const produtoGrande = Produto.criar('p2', 15, 25, 35);
+
+    expect(caixa.cabe(produtoGrande)).toBe(false);
+  });
 });
