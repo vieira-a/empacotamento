@@ -100,4 +100,25 @@ describe('PedidoController (e2e)', () => {
       'Produto não cabe em nenhuma caixa disponível.',
     );
   });
+
+  it('/pedidos/empacotar (POST) - tentativa de acessar rota sem token retorna 401', async () => {
+    const body = {
+      pedidos: [
+        {
+          pedido_id: 'pedido3',
+          produtos: [
+            {
+              produto_id: 'p1',
+              dimensoes: { altura: 5, largura: 5, comprimento: 5 },
+            },
+          ],
+        },
+      ],
+    };
+
+    await request(getServer() as Server)
+      .post('/pedidos/empacotar')
+      .send(body)
+      .expect(401);
+  });
 });
