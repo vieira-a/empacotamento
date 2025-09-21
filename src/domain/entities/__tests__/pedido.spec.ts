@@ -14,4 +14,10 @@ describe('Pedido', () => {
     expect(pedido.id).toBe('pedido1');
     expect(pedido.listaProdutos).toHaveLength(2);
   });
+
+  it('deve lancar erro ao criar pedido sem produtos', () => {
+    expect(() => new Pedido('pedido2', [])).toThrowError(
+      'Pedido pedido2 sem produtos',
+    );
+  });
 });
