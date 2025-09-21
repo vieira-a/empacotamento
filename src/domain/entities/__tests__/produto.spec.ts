@@ -17,5 +17,14 @@ describe('Entidade Produto', () => {
         'Produto p3 com dimensões inválidas.',
       );
     });
+
+    it('deve lançar erro se largura for 0 ou negativa', () => {
+      expect(() => Produto.criar('p4', 10, 0, 10)).toThrow(
+        'Produto p4 com dimensões inválidas.',
+      );
+      expect(() => Produto.criar('p5', 10, -5, 10)).toThrow(
+        'Produto p5 com dimensões inválidas.',
+      );
+    });
   });
 });
