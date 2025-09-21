@@ -1,11 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
-import {
-  EmpacotarPedidoUseCase,
-  PedidoDTO,
-} from 'src/application/use-cases/empacotar-pedido.usecase';
-
-export type EmpacotarPedidosDTO = { pedidos: PedidoDTO[] };
+import { EmpacotarPedidosDTO } from 'src/application/dtos/empacotar-pedido.dto';
+import { EmpacotarPedidoUseCase } from 'src/application/use-cases/empacotar-pedido.usecase';
 
 @Controller('pedidos')
 @ApiTags('Pedidos')

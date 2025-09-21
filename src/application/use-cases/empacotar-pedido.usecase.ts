@@ -2,19 +2,8 @@ import { EmbalagemService } from 'src/domain/services/embalage.service';
 import { Pedido } from '../../domain/entities/pedido';
 import { Produto } from '../../domain/entities/produto';
 import { CAIXAS_PADRAO } from '../../domain/constants/caixas';
-
-export type ProdutoDTO = {
-  produto_id: string;
-  dimensoes: { altura: number; largura: number; comprimento: number };
-};
-
-export type PedidoDTO = { pedido_id: string; produtos: ProdutoDTO[] };
-
-export type CaixaDTO = {
-  caixa_id: string | null;
-  produtos: string[];
-  observacao?: string;
-};
+import { PedidoDTO } from '../dtos/pedido.dto';
+import { CaixaDTO } from '../dtos/caixa.dto';
 
 export class EmpacotarPedidoUseCase {
   private readonly embalagemService = new EmbalagemService(CAIXAS_PADRAO);
