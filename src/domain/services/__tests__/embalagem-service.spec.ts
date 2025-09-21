@@ -25,4 +25,15 @@ describe('EmbalagemService', () => {
     expect(resultado[0].caixa?.id).toBe('C1');
     expect(resultado[0].produtos).toHaveLength(1);
   });
+
+  it('deve retornar caixa null se produto nao couber em nenhuma caixa', () => {
+    const pedido = Pedido.criar('P2', [Produto.criar('p2', 50, 50, 50)]);
+    const resultado = service.embalar(pedido);
+
+    expect(resultado).toHaveLength(1);
+    expect(resultado[0].caixa).toBeNull();
+    expect(resultado[0].observacao).toBe(
+      'Produto não cabe em nenhuma caixa disponível.',
+    );
+  });
 });
