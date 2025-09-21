@@ -36,4 +36,11 @@ describe('Entidade Produto', () => {
       );
     });
   });
+
+  describe('Calculo de volume', () => {
+    it('deve calcular corretamente o volume', () => {
+      const produto = Produto.criar('p8', 2, 3, 4);
+      expect(produto.volume).toBe(24);
+    });
+  });
 });
