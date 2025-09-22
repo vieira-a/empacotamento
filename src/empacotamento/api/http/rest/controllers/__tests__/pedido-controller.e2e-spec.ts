@@ -3,8 +3,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
 import { JwtService } from '@nestjs/jwt';
-import { EmpacotarPedidosResponseDTO } from '../src/empacotamento/api/http/rest/dtos/empacotar-pedido-response.dto';
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../../../../../../app.module';
+import { EmpacotarPedidosResponseDTO } from '../../dtos/empacotar-pedido-response.dto';
 
 describe('PedidoController (e2e)', () => {
   let app: INestApplication;
