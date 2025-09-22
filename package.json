@@ -1,10 +1,10 @@
 {
   "name": "empacotamento",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Aplicação construida para participação em teste técnico",
+  "author": "Anderson Vieira",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
