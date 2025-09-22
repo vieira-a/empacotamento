@@ -34,6 +34,26 @@ A API deve retornar um JSON que, para cada pedido, lista as caixas usadas e quai
 - API com autenticação via JWT para microsserviços.
 - Testes unitários cobrindo casos críticos.
 
+## Fluxo de empacotamento de pedidos
+
+O diagrama abaixo mostra o fluxo principal do serviço de empacotamento:
+
+```mermaid
+flowchart TD
+    A[Pedido Recebido] --> B[Validar Pedido]
+    B --> C{Pedido Válido?}
+    C -- Sim --> D[Empacotar Produtos]
+    C -- Não --> E[Notificar erro no pedido]
+
+    D --> F{Produto Cabe em alguma caixa?}
+    F -- Sim --> G[Adicionar produto na menor caixa disponível]
+    F -- Não --> H[Criar grupo separado / sem caixa]
+
+    G --> I[Pedido Empacotado]
+    H --> I
+    E --> I
+```
+
 ## Arquitetura e Decisões Técnicas (ADRs)
 
 Para explicar as decisões de arquitetura, algoritmo, testes e modelagem, consultamos os ADRs a seguir:
