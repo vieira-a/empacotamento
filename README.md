@@ -13,6 +13,7 @@
    - [Executando testes](#executando-testes)
 6. [Swagger](#swagger)
 7. [Observações](#observações)
+8. [Exercício 2](#)
 
 ## Descrição
 
@@ -174,3 +175,11 @@ docker-compose up --build -d
 ```bash
 docker logs -f empacotamento_service
 ```
+
+---
+
+### Exercício 2
+
+A execução do exercício 2 está contida no arquivo:
+
+[Execução](./EXERCICIO-2.md)
