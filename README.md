@@ -1,12 +1,26 @@
 # Microsserviço de empacotamento
 
+## Sumário
+
+1. [Descrição](#descrição)
+2. [Funcionalidades](#funcionalidades)
+3. [Fluxo de empacotamento de pedidos](#fluxo-de-empacotamento-de-pedidos)
+4. [Arquitetura e decisões técnicas - ADRs](#arquitetura-e-decisões-técnicas---adrs)
+5. [Como executar a aplicação](#como-executar-a-aplicação)
+   - [Pré-requisitos](#pré-requisitos)
+   - [Rodando com Docker](#como-rodar-com-docker)
+   - [Geração de token](#geração-de-token)
+   - [Executando testes](#executando-testes)
+6. [Swagger](#swagger)
+7. [Observações](#observações)
+
 ## Descrição
 
 API Web utilizando Node com NestJs que recebe, em formato JSON, uma lista de pedidos. Cada pedido contém uma lista de produtos, cada um com suas dimensões (altura, largura, comprimento).
 
 A API processa cada pedido e determina a melhor forma de embalar os produtos, selecionando uma ou mais caixas para cada pedido e especificando quais produtos vão em cada caixa.
 
-### Caixas disponívels
+### Caixas disponíveis
 
 - Caixa 1: 30 x 40 x 80
 - Caixa 2: 50 x 50 x 40
@@ -54,7 +68,7 @@ flowchart TD
     E --> I
 ```
 
-## Arquitetura e Decisões Técnicas (ADRs)
+## Arquitetura e decisões técnicas - ADRs
 
 Para explicar as decisões de arquitetura, algoritmo, testes e modelagem, consultamos os ADRs a seguir:
 
@@ -105,7 +119,9 @@ docker-compose down
 
 ### Geração de token
 
-A aplicação é distribuída como container Docker, garantindo que todos os ambientes sejam consistentes.
+Como requisito, a aplicação gera um token para autenticar outros microsserviços.
+
+1. Para criar um novo token através do container:
 
 ```bash
 docker exec -it empacotamento_service node dist/generate-token.js empacotamento`
@@ -141,7 +157,7 @@ No Swagger, é possível autenticar as requisições usando JWT:
 - Clique no botão Authorize
 - Insira o token gerado anteriormente
 
-> Após autorizar, a rota protegia aceitará o JWT
+> Após autorizar, a rota protegida aceitará o JWT
 
 ### Observações
 
