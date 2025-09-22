@@ -17,6 +17,17 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('API de Pedidos')
     .setDescription('API para empacotamento de pedidos')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'Authorization',
+        description: 'Insira o token JWT',
+        in: 'header',
+      },
+      'jwt',
+    )
     .setVersion('1.0')
     .build();
 
