@@ -13,7 +13,7 @@
    - [Executando testes](#executando-testes)
 6. [Swagger](#swagger)
 7. [Observações](#observações)
-8. [Exercício 2](#)
+8. [Exercício 2](#exercício-2)
 
 ## Descrição
 
