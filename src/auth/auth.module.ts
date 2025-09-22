@@ -6,7 +6,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
@@ -16,7 +15,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
   ],
-  providers: [JwtStrategy, MicroserviceAuthService],
+  providers: [MicroserviceAuthService, JwtStrategy],
   exports: [MicroserviceAuthService],
 })
 export class AuthModule {}

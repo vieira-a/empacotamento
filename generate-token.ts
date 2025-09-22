@@ -1,11 +1,11 @@
 #!/usr/bin/env ts-node
 
 import { NestFactory } from '@nestjs/core';
-import { AuthModule } from './src/auth/auth.module';
 import { MicroserviceAuthService } from './src/auth/microsservice-auth.service';
+import { AppModule } from './src/app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.createApplicationContext(AuthModule, {
+  const app = await NestFactory.createApplicationContext(AppModule, {
     logger: false,
   });
 

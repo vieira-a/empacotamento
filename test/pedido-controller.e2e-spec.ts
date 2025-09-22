@@ -2,9 +2,9 @@ import { Server } from 'http';
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
-import { EmpacotamentoModule } from '../src/empacotamento.module';
+import { EmpacotamentoModule } from '../src/empacotamento/empacotamento.module';
 import { JwtService } from '@nestjs/jwt';
-import { EmpacotarPedidosResponseDTO } from '../src/api/http/rest/dtos/empacotar-pedido-response.dto';
+import { EmpacotarPedidosResponseDTO } from '../src/empacotamento/api/http/rest/dtos/empacotar-pedido-response.dto';
 
 describe('PedidoController (e2e)', () => {
   let app: INestApplication;

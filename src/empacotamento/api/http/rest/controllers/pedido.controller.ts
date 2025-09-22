@@ -8,7 +8,7 @@ import {
 } from '@nestjs/swagger';
 import { EmpacotarPedidosDTO } from '../../../../application/dtos/empacotar-pedido.dto';
 import { EmpacotarPedidoUseCase } from '../../../../application/use-cases/empacotar-pedido.usecase';
-import { JwtMicroserviceGuard } from '../../../../auth/jwt.guard';
+import { JwtMicroserviceGuard } from '../../../../../auth/jwt.guard';
 import { EmpacotarPedidosResponseDTO } from '../dtos/empacotar-pedido-response.dto';
 
 @Controller('pedidos')
