@@ -23,3 +23,95 @@ Para cada pedido, a API deve calcular a melhor forma de empacotar os produtos de
 **Saída:**
 
 A API deve retornar um JSON que, para cada pedido, lista as caixas usadas e quais produtos foram colocados em cada caixa.
+
+---
+
+## Como executar a aplicação
+
+A aplicação é distribuída como container Docker, garantindo que todos os ambientes sejam consistentes.
+
+### Pré-requisitos
+
+- Docker (Desktop ou Engine)
+- Docker Compose
+- Node.js (para desenvolvimento local, opcional se for rodar tudo via Docker)
+
+### Como Rodar com Docker
+
+1. **Build e start do container:**
+
+```bash
+docker-compose up --build -d
+```
+
+> O --build garante que a imagem seja reconstruída caso haja alterações no código.
+
+2. Verificar container rodando
+
+```bash
+docker ps
+```
+
+- O container principal deve estar com o nome definido no `docker-compose.yml`: `empacotamento_service` e a porta `3000` exposta.
+
+3. Parando o container
+
+```bash
+docker-compose down
+```
+
+### Geração de token
+
+A aplicação é distribuída como container Docker, garantindo que todos os ambientes sejam consistentes.
+
+```bash
+docker exec -it empacotamento_service node dist/generate-token.js empacotamento`
+```
+
+> Este comando utiliza o script generate-token.js dentro do container para criar um token JWT válido.
+
+### Executando testes
+
+Para rodar os testes dentro do container:
+
+1. Acessar o container
+
+```bash
+docker exec -it empacotamento_service sh`
+```
+
+2. Rode os testes desejados
+
+- Testes unitários: `npm run test`
+- Testes e2e: `npm run test:e2e`
+
+## Swagger
+
+A API possui documentação interativa via Swagger, que pode ser acessada em:
+
+```bash
+http://localhost:3000/docs
+```
+
+No Swagger, é possível autenticar as requisições usando JWT:
+
+- Clique no botão Authorize
+- Insira o token gerado anteriormente
+
+> Após autorizar, a rota protegia aceitará o JWT
+
+### Observações
+
+O Dockerfile segue o padrão Nest.js, compilando o TypeScript para dist/src/main.js.
+
+- Para alterações no código, recomendo rebuild do container:
+
+```bash
+docker-compose up --build -d
+```
+
+- Logs do container podem ser acompanhados com:
+
+```bash
+docker logs -f empacotamento_service
+```
