@@ -26,6 +26,29 @@ A API deve retornar um JSON que, para cada pedido, lista as caixas usadas e quai
 
 ---
 
+## Funcionalidades
+
+- Empacotamento automático de produtos em caixas.
+- Escolha da menor caixa possível.
+- Suporte a múltiplos produtos e caixas por pedido.
+- API com autenticação via JWT para microsserviços.
+- Testes unitários cobrindo casos críticos.
+
+## Arquitetura e Decisões Técnicas (ADRs)
+
+Para explicar as decisões de arquitetura, algoritmo, testes e modelagem, consultamos os ADRs a seguir:
+
+| ADR | Assunto                                              | Link                                                                                |
+| --- | ---------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| 001 | Arquitetura com domínio rico                         | [ADR 001 – Domínio Rico](docs/adrs/001-dominios-ricos.md)                           |
+| 002 | Implementação do algoritmo de empacotamento          | [ADR 002 – Algoritmo de Empacotamento](docs/adrs/002-algoritmo-empacotamento.md)    |
+| 003 | Cobretura de testes e localização dos arquivos       | [ADR 003 – Cobertura de testes](docs/adrs/003-cobertura-testes.md)                  |
+| 004 | Decisão de deixar caixas no código ao invés do banco | [ADR 004 – Caixas definidas no código](docs/adrs/004-caixas-definidas-no-codigo.md) |
+
+> **Observação:** Os arquivos de ADRs estão localizados em `docs/adrs/` para manter histórico de decisões e permitir fácil consulta futura.
+
+---
+
 ## Como executar a aplicação
 
 A aplicação é distribuída como container Docker, garantindo que todos os ambientes sejam consistentes.
