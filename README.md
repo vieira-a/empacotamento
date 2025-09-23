@@ -96,6 +96,8 @@ A aplicação é distribuída como container Docker, garantindo que todos os amb
 
 ### Como Rodar com Docker
 
+0. Renomear o arquivo `env-example` para `.env` e preencher a variável `MICROSERVICE_JWT_SECRET` com o valor desejado. Esta variável é necessária para compor o token de autenticação.
+
 1. **Build e start do container:**
 
 ```bash
